@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>High Fidelity Media Converter</title>
+</head>
+<body>
+  <h1>🎧 High Fidelity Media Converter</h1>
+
+  <h2>File → WAV (24-bit)</h2>
+  <form action="/convert" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".mov,.mp4,.m4a" required />
+    <button type="submit">Convert to WAV</button>
+  </form>
+
+  <hr />
+
+  <h2>YouTube Downloader</h2>
+  <input id="yturl" placeholder="Paste YouTube URL" size="60" />
+  <br /><br />
+  <button onclick="download('mp4')">Download MP4 (Best)</button>
+  <button onclick="download('mp3')">Download MP3 (320kbps)</button>
+
+  <script>
+    function download(type) {
+      const url = document.getElementById("yturl").value;
+      if (!url) return alert("Paste a YouTube URL");
+
+      window.location = `/yt/${type}?url=${encodeURIComponent(url)}`;
+    }
+  </script>
+</body>
+</html>
